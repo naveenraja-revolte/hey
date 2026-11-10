@@ -95,6 +95,7 @@ a:focus-visible {
 
 .wordmark {
   display: inline-flex;
+  min-height: 2.75rem;
   align-items: center;
   gap: var(--space-3);
   text-decoration: none;
@@ -129,7 +130,10 @@ a:focus-visible {
 }
 
 .site-header nav a {
-  padding-block: var(--space-2);
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding-block: 0;
   color: var(--color-muted);
   font-size: 0.8rem;
   text-decoration-thickness: 1px;
@@ -138,6 +142,11 @@ a:focus-visible {
 
 .site-header nav a:hover {
   color: var(--color-accent-dark);
+}
+
+a:active {
+  color: var(--color-ink);
+  text-decoration-thickness: 2px;
 }
 
 .hero {
