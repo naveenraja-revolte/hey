@@ -1,0 +1,9 @@
+# Crash artifacts — can contain large process memory dumps
+core
+core.*
+*.heapsnapshot
+report.*.json
+isolate-*.log
+
+# User-facing artifacts are delivered separately and not committed
+.revolte/artifacts/
