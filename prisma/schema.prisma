@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AgentStatus {
+  online
+  busy
+  away
+  offline
+}
+
+enum TicketPriority {
+  P1
+  P2
+  P3
+  P4
+}
+
+enum TicketStatus {
+  new
+  assigned
+  in_progress
+  resolved
+  escalated
+}
+
+enum AssignmentAction {
+  assigned
+  requeued
+  manual_override
+  escalated
+}
+
+enum OutboxStatus {
+  pending
+  published
+}
+
+model Agent {
+  id               String               @id @default(uuid()) @db.Uuid
+  name             String
+  email            String               @unique
+  maxConcurrent    Int                  @map("max_concurrent")
+  shiftStartMinute Int                  @map("shift_start_minute")
+  shiftEndMinute   Int                  @map("shift_end_minute")
+  timezone         String               @default("UTC")
+  status           AgentStatus          @default(offline)
+  lastAssignedAt   DateTime?            @map("last_assigned_at") @db.Timestamptz(3)
+  createdAt        DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime             @updatedAt @map("updated_at") @db.Timestamptz(3)
+  skills           AgentSkill[]
+  assignedTickets  Ticket[]             @relation("AssignedTickets")
+  assignmentHistory AssignmentHistory[]
+
+  @@index([status])
+  @@map("agents")
+}
+
+model AgentSkill {
+  agentId     String @map("agent_id") @db.Uuid
+  skill       String
+  proficiency Int
+  agent       Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
+
+  @@id([agentId, skill])
+  @@index([skill])
+  @@map("agent_skills")
+}
+
+model Queue {
+  id                      String             @id @default(uuid()) @db.Uuid
+  name                    String             @unique
+  priorityWeight          Float              @default(1) @map("priority_weight")
+  firstResponseSlaMinutes Int                @map("first_response_sla_minutes")
+  resolutionSlaMinutes    Int                @map("resolution_sla_minutes")
+  createdAt               DateTime           @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt               DateTime           @updatedAt @map("updated_at") @db.Timestamptz(3)
+  requiredSkills          QueueRequiredSkill[]
+  tickets                 Ticket[]
+
+  @@map("queues")
+}
+
+model QueueRequiredSkill {
+  queueId String @map("queue_id") @db.Uuid
+  skill   String
+  queue   Queue  @relation(fields: [queueId], references: [id], onDelete: Cascade)
+
+  @@id([queueId, skill])
+  @@index([skill])
+  @@map("queue_required_skills")
+}
+
+model Ticket {
+  id                 String                @id @default(uuid()) @db.Uuid
+  title              String
+  description        String
+  queueId            String                @map("queue_id") @db.Uuid
+  assignedAgentId    String?               @map("assigned_agent_id") @db.Uuid
+  priority           TicketPriority        @default(P3)
+  status             TicketStatus          @default(new)
+  createdAt          DateTime              @default(now()) @map("created_at") @db.Timestamptz(3)
+  firstResponseDueAt DateTime              @map("first_response_due_at") @db.Timestamptz(3)
+  slaDueAt           DateTime              @map("sla_due_at") @db.Timestamptz(3)
+  firstResponseAt    DateTime?             @map("first_response_at") @db.Timestamptz(3)
+  resolvedAt         DateTime?             @map("resolved_at") @db.Timestamptz(3)
+  version            Int                   @default(0)
+  queue              Queue                 @relation(fields: [queueId], references: [id], onDelete: Restrict)
+  assignedAgent      Agent?                @relation("AssignedTickets", fields: [assignedAgentId], references: [id], onDelete: SetNull)
+  requiredSkills     TicketRequiredSkill[]
+  assignmentHistory  AssignmentHistory[]
+
+  @@index([status, createdAt])
+  @@index([status, slaDueAt])
+  @@index([status, firstResponseDueAt])
+  @@index([assignedAgentId, status])
+  @@index([queueId, status, createdAt])
+  @@map("tickets")
+}
+
+model TicketRequiredSkill {
+  ticketId String @map("ticket_id") @db.Uuid
+  skill    String
+  ticket   Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+
+  @@id([ticketId, skill])
+  @@index([skill])
+  @@map("ticket_required_skills")
+}
+
+model AssignmentHistory {
+  id          String           @id @default(uuid()) @db.Uuid
+  ticketId    String           @map("ticket_id") @db.Uuid
+  agentId     String?          @map("agent_id") @db.Uuid
+  fromAgentId String?          @map("from_agent_id") @db.Uuid
+  action      AssignmentAction
+  strategy    String?
+  actor       String           @default("system")
+  reason      String?
+  createdAt   DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  ticket      Ticket           @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  agent       Agent?           @relation(fields: [agentId], references: [id], onDelete: SetNull)
+
+  @@index([ticketId, createdAt])
+  @@index([agentId, createdAt])
+  @@map("assignment_history")
+}
+
+model OutboxEvent {
+  id          String       @id @default(uuid()) @db.Uuid
+  type        String
+  payload     Json
+  status      OutboxStatus @default(pending)
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  publishedAt DateTime?    @map("published_at") @db.Timestamptz(3)
+
+  @@index([status, createdAt])
+  @@map("outbox_events")
+}

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+prisma/dev.db
+src/generated/prisma/
+
+# Crash artifacts — prevent oversized dumps from entering repository history
+core
+core.*
+*.heapsnapshot
+report.*.json
+isolate-*.log
