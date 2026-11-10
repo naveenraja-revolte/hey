@@ -1,0 +1,9 @@
+# Requested artifacts are delivered separately and should not be committed.
+.revolte/artifacts/
+
+# Crash artifacts — a single core dump can exceed GitHub's 100MB file limit
+core
+core.*
+*.heapsnapshot
+report.*.json
+isolate-*.log

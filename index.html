@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A short, spoiler-light review of 3 Idiots, the heartfelt campus comedy."
+    >
+    <title>3 Idiots — The Film Margin</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5f0e6;
+        --paper-deep: #ebe2d2;
+        --ink: #201d1a;
+        --ink-soft: #595149;
+        --rule: #cfc2ad;
+        --vermilion: #943629;
+        --gold: #d9a441;
+        --space-1: 0.5rem;
+        --space-2: 1rem;
+        --space-3: 1.5rem;
+        --space-4: 2rem;
+        --space-5: 3rem;
+        --space-6: 4rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .page-shell {
+        width: min(100% - 3rem, 68rem);
+        margin-inline: auto;
+      }
+
+      .masthead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2);
+        padding-block: var(--space-2);
+        border-bottom: 1px solid var(--ink);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .masthead p {
+        margin: 0;
+      }
+
+      .masthead-issue {
+        color: var(--ink-soft);
+        font-weight: 500;
+        letter-spacing: 0.08em;
+      }
+
+      main {
+        padding-block: var(--space-6);
+      }
+
+      .eyebrow {
+        margin: 0 0 var(--space-2);
+        color: var(--vermilion);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .film-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+        gap: var(--space-4);
+        padding-bottom: var(--space-4);
+        border-bottom: 1px solid var(--ink);
+      }
+
+      h1,
+      h2,
+      blockquote {
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      h1 {
+        max-width: 11ch;
+        margin: 0;
+        font-size: clamp(3.75rem, 11vw, 7.5rem);
+        font-weight: 700;
+        letter-spacing: -0.075em;
+        line-height: 0.88;
+      }
+
+      .film-meta {
+        margin: var(--space-3) 0 0;
+        color: var(--ink-soft);
+        font-size: 0.875rem;
+        letter-spacing: 0.03em;
+      }
+
+      .rating-stamp {
+        display: grid;
+        width: 8rem;
+        aspect-ratio: 1;
+        align-content: center;
+        justify-items: center;
+        border: 3px double var(--vermilion);
+        border-radius: 50%;
+        color: var(--vermilion);
+        line-height: 1;
+        transform: rotate(5deg);
+      }
+
+      .rating-number {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 3.25rem;
+        font-weight: 700;
+        letter-spacing: -0.08em;
+      }
+
+      .rating-out-of {
+        margin-top: 0.25rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .review-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(13rem, 0.8fr);
+        gap: var(--space-6);
+        padding-top: var(--space-5);
+      }
+
+      article p {
+        max-width: 62ch;
+        margin: 0 0 var(--space-3);
+        color: var(--ink-soft);
+        font-size: 1.0625rem;
+      }
+
+      article p:first-of-type {
+        color: var(--ink);
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+
+      .verdict {
+        margin: var(--space-4) 0 0;
+        padding: var(--space-2) 0 var(--space-2) var(--space-3);
+        border-left: 4px solid var(--gold);
+        color: var(--ink);
+        font-size: 1.25rem;
+        font-style: italic;
+        line-height: 1.45;
+      }
+
+      .reasons {
+        align-self: start;
+        padding: var(--space-3) 0 0;
+        border-top: 4px solid var(--gold);
+      }
+
+      .reasons h2 {
+        margin: 0 0 var(--space-2);
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .reasons ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .reasons li {
+        padding-block: var(--space-2);
+        border-bottom: 1px solid var(--rule);
+        color: var(--ink-soft);
+      }
+
+      .reasons li strong {
+        display: block;
+        color: var(--ink);
+      }
+
+      footer {
+        margin-top: var(--space-6);
+        padding-block: var(--space-2);
+        border-top: 1px solid var(--ink);
+        color: var(--ink-soft);
+        font-size: 0.8125rem;
+      }
+
+      @media (max-width: 42rem) {
+        .page-shell {
+          width: min(100% - 2rem, 68rem);
+        }
+
+        main {
+          padding-block: var(--space-5);
+        }
+
+        .film-heading {
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: start;
+          gap: var(--space-2);
+        }
+
+        h1 {
+          font-size: clamp(3.25rem, 17vw, 5rem);
+        }
+
+        .rating-stamp {
+          width: 5.5rem;
+          border-width: 2px;
+        }
+
+        .rating-number {
+          font-size: 2.25rem;
+        }
+
+        .rating-out-of {
+          font-size: 0.6rem;
+        }
+
+        .review-layout {
+          grid-template-columns: 1fr;
+          gap: var(--space-5);
+          padding-top: var(--space-4);
+        }
+
+        .reasons {
+          max-width: 35rem;
+        }
+      }
+
+      @media (max-width: 22rem) {
+        .masthead {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .film-heading {
+          grid-template-columns: 1fr;
+        }
+
+        .rating-stamp {
+          width: 5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="masthead">
+        <p>The Film Margin</p>
+        <p class="masthead-issue">A little room for big-screen thoughts</p>
+      </header>
+
+      <main>
+        <section class="film-heading" aria-labelledby="film-title">
+          <div>
+            <p class="eyebrow">A warm-hearted campus comedy</p>
+            <h1 id="film-title">3 Idiots</h1>
+            <p class="film-meta">
+              2009 <span aria-hidden="true">·</span> Hindi
+              <span aria-hidden="true">·</span> Directed by Rajkumar Hirani
+            </p>
+          </div>
+          <div class="rating-stamp" aria-label="Rating: 8 out of 10">
+            <span class="rating-number" aria-hidden="true">8</span>
+            <span class="rating-out-of">out of 10</span>
+          </div>
+        </section>
+
+        <div class="review-layout">
+          <article aria-labelledby="review-title">
+            <h2 id="review-title" class="eyebrow">The review</h2>
+            <p>
+              Funny, generous, and full of restless energy, <em>3 Idiots</em>
+              turns the pressure of college life into a story about friendship
+              and finding your own way. Its jokes land easily, but the film's
+              warmth is what stays with you.
+            </p>
+            <p>
+              Aamir Khan, R. Madhavan, and Sharman Joshi make the central trio
+              feel like old friends, while the campus setting gives the comedy
+              room to swing between absurd fun and more sincere moments. The
+              film can be broad, but its heart is in the right place: curiosity
+              matters more than chasing a perfect score.
+            </p>
+            <blockquote class="verdict">
+              A crowd-pleaser with a kind message and enough laughs to earn its
+              long runtime.
+            </blockquote>
+          </article>
+
+          <aside class="reasons" aria-labelledby="reasons-title">
+            <h2 id="reasons-title">Why give it a watch?</h2>
+            <ul>
+              <li>
+                <strong>The friendship</strong>
+                A lively trio whose bond gives the story its center.
+              </li>
+              <li>
+                <strong>The humor</strong>
+                Big comic moments balanced with warm, human details.
+              </li>
+              <li>
+                <strong>The message</strong>
+                An encouraging nudge to follow curiosity, not just pressure.
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </main>
+
+      <footer>
+        A spoiler-light note for anyone deciding what to watch next.
+      </footer>
+    </div>
+  </body>
+</html>
