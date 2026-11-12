@@ -1,0 +1,25 @@
+# Dependencies and framework output
+node_modules/
+.next/
+out/
+.vercel/
+coverage/
+*.tsbuildinfo
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Crash artifacts — may contain large memory dumps
+core
+core.*
+*.heapsnapshot
+report.*.json
+isolate-*.log
