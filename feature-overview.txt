@@ -1,0 +1,24 @@
+DAILY LEDGER — FEATURE OVERVIEW
+
+PURPOSE
+Daily Ledger is a private, single-device website for recording everyday purchases and checking how the current month is going against one overall recurring monthly limit. It is designed for a person who wants quick entry and a calm, clear view of spending without managing accounts, banks, or a household.
+
+INCLUDED FEATURES
+• Add an expense: record a positive amount, calendar date, and category; optionally add a short description. The amount, date, and category are validated before saving.
+• Built-in categories: Groceries, Dining, Transport, Home, Health, Shopping, Bills, and Other.
+• Monthly overview: see the selected month’s total, number of expenses, recent entries, and month-to-month navigation.
+• Manage entries: edit an expense or delete it after confirmation. The list is paginated so older entries remain reachable.
+• Recurring overall limit: set one amount that carries into each calendar month. The dashboard shows the amount spent, remaining amount, or how far spending has exceeded the limit.
+• Local currency: the starting currency is inferred from the device’s language/region where supported; it can be changed before personal expenses are added. Currency changes do not perform exchange conversion.
+• Private local storage: expense and budget information is kept in a SQLite database on the same device. No sign-in, cloud sync, bank connection, or third-party service is used.
+• First-run examples: clearly marked example expenses are stored in the local database to demonstrate the ledger. They can be edited or removed; changing currency clears remaining examples and resets the budget.
+• Responsive, accessible interaction: keyboard-visible focus, labeled fields, feedback for saved/invalid actions, confirmation before deletion, loading/error/empty states, and layouts for narrow screens.
+
+EVERYDAY FLOW
+1. Open the month view and check the total and budget balance.
+2. Add a purchase using its amount, date, and category, with an optional description.
+3. Find the saved entry in the month’s list; edit it or confirm deletion if it needs correction.
+4. Set or adjust the monthly limit; the same amount applies to each calendar month.
+
+DELIBERATELY NOT INCLUDED
+Accounts or multi-user access, public hosting, cross-device sync, bank feeds or imports, income tracking, shared finances, custom categories, category-specific budgets, automatic recurring expenses, exports, and tax reporting. The app binds to the local device; public network use would require authentication and access controls first.
