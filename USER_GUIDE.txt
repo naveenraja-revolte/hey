@@ -1,0 +1,18 @@
+EVERYDAY CALCULATOR — QUICK GUIDE
+
+Use the keypad or your keyboard to enter a calculation. Chained operations are evaluated as you go, from left to right. For example, 2 + 3 × 4 gives 20.
+
+KEYBOARD CONTROLS
+
+0–9          Enter a digit
+.            Add a decimal point
++ or -       Add or subtract
+* or /       Multiply or divide
+Enter or =   Show the result
+Backspace    Delete the last character in the current number
+Escape       Clear the calculation
+Delete       Clear the calculation
+
+Use the on-screen ± button to change the sign of the current number. AC clears the calculation, and ⌫ removes the last character. If you try to divide by zero, the calculator explains the error; enter a new digit or clear the calculation to continue.
+
+Calculations stay in the current page and are not saved.
