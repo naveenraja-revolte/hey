@@ -1,0 +1,36 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# Next.js build output
+/.next/
+/out/
+/build/
+
+# Local environment
+.env*
+!.env.example
+
+# Logs and package manager debug output
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS and editor files
+.DS_Store
+*.swp
+
+# Generated user-facing artifacts
+/.revolte/artifacts/
+/.revolte/preview.json
+
+# TypeScript incremental cache
+/tsconfig.tsbuildinfo
+
+# Crash artifacts
+core
+core.*
+*.heapsnapshot
+report.*.json
+isolate-*.log

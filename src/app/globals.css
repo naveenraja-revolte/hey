@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #f8fafc;
+  --foreground: #1e293b;
+  --card: #ffffff;
+  --card-foreground: #1e293b;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #e9eff8;
+  --secondary-foreground: #1e293b;
+  --accent: #ea580c;
+  --accent-foreground: #ffffff;
+  --muted: #e9eff8;
+  --muted-foreground: #475569;
+  --border: #e2e8f0;
+  --ring: #2563eb;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --success: #15803d;
+  --warning: #b45309;
+  --info: #1d4ed8;
+  --radius-control: 8px;
+  --radius-container: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --card: #1e293b;
+    --card-foreground: #f8fafc;
+    --primary: #93c5fd;
+    --primary-foreground: #0f172a;
+    --secondary: #334155;
+    --secondary-foreground: #f8fafc;
+    --accent: #fdba74;
+    --accent-foreground: #0f172a;
+    --muted: #334155;
+    --muted-foreground: #cbd5e1;
+    --border: #475569;
+    --ring: #93c5fd;
+    --destructive: #991b1b;
+    --destructive-foreground: #ffffff;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --info: #60a5fa;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --font-heading: var(--font-inter);
+  --font-sans: var(--font-inter);
+}
+
+@keyframes calculator-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+}
