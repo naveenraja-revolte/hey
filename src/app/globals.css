@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: #f8fafc;
+  --color-foreground: #1e3a8a;
+  --color-card: #ffffff;
+  --color-card-foreground: #1e3a8a;
+  --color-primary: #1e40af;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #3b82f6;
+  --color-secondary-foreground: #0f172a;
+  --color-accent: #d97706;
+  --color-accent-foreground: #0f172a;
+  --color-muted: #e9eef6;
+  --color-muted-foreground: #475569;
+  --color-border: #dbeafe;
+  --color-ring: #1e40af;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-info: #1d4ed8;
+  --radius-control: 4px;
+  --radius-container: 8px;
+  --font-heading: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility page-enter {
+  animation: enter 220ms ease-out both;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}

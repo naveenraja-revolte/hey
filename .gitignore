@@ -1,0 +1,25 @@
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+.turbo/
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.log
+.DS_Store
+.vercel/
+.revolte/artifacts/
+
+# Crash artifacts — may contain the process memory image
+core
+core.*
+*.heapsnapshot
+report.*.json
+isolate-*.log
