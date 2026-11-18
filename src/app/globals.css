@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: light;
+  --background: #f8fafc;
+  --foreground: #1e293b;
+  --card: #ffffff;
+  --card-foreground: #1e293b;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #3b82f6;
+  --secondary-foreground: #000000;
+  --accent: #ea580c;
+  --accent-foreground: #000000;
+  --muted: #e9eff8;
+  --muted-foreground: #475569;
+  --border: #e2e8f0;
+  --ring: #2563eb;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --success: #15803d;
+  --warning: #b45309;
+  --info: #1d4ed8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --card: #1e293b;
+    --card-foreground: #f8fafc;
+    --primary: #6b8afd;
+    --primary-foreground: #0f172a;
+    --secondary: #334155;
+    --secondary-foreground: #f8fafc;
+    --accent: #ea580c;
+    --accent-foreground: #ffffff;
+    --muted: #272f42;
+    --muted-foreground: #cbd5e1;
+    --border: #475569;
+    --ring: #93c5fd;
+    --destructive: #f87171;
+    --destructive-foreground: #0f172a;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --info: #60a5fa;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --radius-control: 4px;
+  --radius-container: calc(var(--radius-control) + 4px);
+  --font-heading: var(--font-display);
+  --font-sans: var(--font-display);
+  --font-mono: var(--font-numeric);
+  --animate-enter: calculator-enter 220ms ease-out both;
+
+  @keyframes calculator-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
