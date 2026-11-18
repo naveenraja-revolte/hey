@@ -13,10 +13,21 @@ export type ContactFormState = {
   };
 };
 
+function isContactFormSubmissionAuthorized(): boolean {
+  return process.env.CONTACT_FORM_SUBMISSIONS_ENABLED !== 'false';
+}
+
 export async function submitContactForm(
   _previousState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
+  if (!isContactFormSubmissionAuthorized()) {
+    return {
+      status: 'error',
+      message: 'This form is not accepting submissions right now.',
+    };
+  }
+
   const result = contactFormSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
